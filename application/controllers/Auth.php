@@ -11,11 +11,57 @@ class Auth extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'User Login';
+        $this->form_validation->set_rules('username', 'Username', 'required|trim');
+        $this->form_validation->set_rules('password', 'Password', 'required|trim');
 
-        $this->load->view('templates/auth_header', $data);
-        $this->load->view('auth/login', $data);
-        $this->load->view('templates/auth_footer');
+        if ($this->form_validation->run() == false) {
+            $data['title'] = 'User Login';
+            $this->load->view('templates/auth_header', $data);
+            $this->load->view('auth/login', $data);
+            $this->load->view('templates/auth_footer');
+        } else {
+            $this->_login();
+        }
+    }
+
+    private function _login()
+    {
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+
+        $user = $this->db->get_where('user', ['username' => $username])->row_array();
+
+        if ($user) {
+            //if exist, cek if is it activated
+            if ($user['is_active'] == 1) {
+                //if user is activated, then cek password
+                if (password_verify($password, $user['password'])) {
+                    // if password ok then cek role
+                    $data = [
+                        'username' => $user['username'],
+                        'role_id'  => $user['role_id']
+                    ];
+                    $this->session->set_userdata($data);
+                    if ($user['role_id'] == 1) {
+                        redirect('admin');
+                    } else {
+                        redirect('user');
+                    }
+                } else {
+                    //if password not correct
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Wrong password!.</div>');
+                    redirect('auth');
+                }
+            } else {
+                //if user is not active
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">User has not been activated!.</div>');
+                redirect('auth');
+            }
+        } else {
+            //if doesnt exist
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username does not exist!.</div>');
+            redirect('auth');
+        }
     }
 
     public function registration()

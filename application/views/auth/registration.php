@@ -3,16 +3,16 @@
         <form action="<?= base_url('auth/registration'); ?>" method="post">
             <h2 class="text-center">Registration Form</h2>
             <div class="form-group">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Full name">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Full name" value="<?= set_value('name'); ?>">
                 <?= form_error('name', '<small class="text-danger pd-3">', '</small>'); ?>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="<?= set_value('username'); ?>">
                 <?= form_error('username', '<small class="text-danger pd-3">', '</small>'); ?>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
-                <?= form_error('password', '<small class="text-danger pd-3">', '</small>'); ?>
+                <?= form_error('password1', '<small class="text-danger pd-3">', '</small>') ?>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password">
