@@ -14,20 +14,25 @@
 
 <body>
     <div class="login-form">
-        <form action="auth/login" method="post">
+        <form action="auth/register" method="post">
             <h2 class="text-center">Log in</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Fullname">
+            </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="username" name="username" placeholder="Username">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <input type="password1" class="form-control" id="password1" name="password1" placeholder="Password">
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Log in</button>
+                <input type="password2" class="form-control" id="password2" name="password2" placeholder="Confirm Password">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
             </div>
             <div class="clearfix">
-                <a href="<?= base_url('auth/register'); ?>" class="pull-left">Create Account?</a>
-                <a href="#" class="pull-right">Forgot Password?</a>
+                <a href="<?= base_url('auth'); ?>" class="pull-right">Already have account?</a>
             </div>
         </form>
     </div>
