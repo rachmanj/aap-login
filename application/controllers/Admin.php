@@ -9,6 +9,8 @@ class Admin extends CI_Controller
         $data['title'] = 'Admin Page';
 
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('templates/sidebar', $data);
         $this->load->view('admin/index', $data);
         $this->load->view('templates/footer');
     }
