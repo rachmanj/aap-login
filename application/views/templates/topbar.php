@@ -27,7 +27,7 @@
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="<?= base_url('assets/'); ?>dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <img src="<?= base_url('assets/'); ?>img/profile/<?= $user['image']; ?>" class="user-image" alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs"><?= $user['name']; ?></span>
                             </a>
@@ -54,7 +54,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="<?= base_url('user') ?>" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="<?= base_url('auth/logout'); ?>" class="btn btn-default btn-flat">Sign out</a>
