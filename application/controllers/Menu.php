@@ -3,6 +3,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Menu extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('menu_model', 'menu');
+    }
+
+
     public function index()
     {
         $data['title'] = 'Menu Management';
@@ -24,5 +31,12 @@ class Menu extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New menu added.</div>');
             redirect('menu');
         }
+    }
+
+    public function delMenu($id)
+    {
+        $this->menu->deleteMenu($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu deleted.</div>');
+        redirect('menu');
     }
 }
