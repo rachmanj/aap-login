@@ -16,4 +16,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>dist/css/skins/skin-blue.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/datatables/dataTables.bootstrap.css">
 </head>

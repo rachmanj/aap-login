@@ -18,6 +18,22 @@
 <script src="<?= base_url('assets/'); ?>bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('assets/'); ?>dist/js/app.min.js"></script>
+<!-- DataTables -->
+<script src="<?= base_url('assets/'); ?>plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?= base_url('assets/'); ?>plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script>
+    $(function() {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false
+        });
+    });
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the
