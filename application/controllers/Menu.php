@@ -18,6 +18,7 @@ class Menu extends CI_Controller
 
         $data['menu'] = $this->db->get('user_menu')->result_array();
 
+
         $this->form_validation->set_rules('menu', 'Menu', 'required');
 
         if ($this->form_validation->run() == false) {
@@ -38,5 +39,28 @@ class Menu extends CI_Controller
         $this->menu->deleteMenu($id);
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Menu deleted.</div>');
         redirect('menu');
+    }
+
+    public function editMenu($id)
+    {
+        $data['title'] = 'Menu Management';
+        $data['subtitle'] = 'Edit Menu';
+        $data['user'] = $this->db->get_where('user', ['username' => $this->session->userdata('username')])->row_array();
+
+        $data['menu'] = $this->menu->getMenuById($id);
+
+        $this->form_validation->set_rules('menu', 'Menu', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('menu/editMenu', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $this->menu->editMenuName();
+            $this->session->set_flashdata('message', 'Menu name changed');
+            redirect('menu');
+        }
     }
 }

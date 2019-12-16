@@ -38,10 +38,8 @@
                                         <td><?= $i; ?></td>
                                         <td><?= $m['menu']; ?></td>
                                         <td>
-                                            <div class="btn-group">
-                                                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#editMenuModal">edit</a>
-                                                <a class="btn btn-danger btn-xs" href="<?= base_url('menu/delMenu/') . $m['id']; ?>">delete</a>
-                                            </div>
+                                            <a class="btn btn-primary btn-xs" href="<?= base_url('menu/editMenu/') . $m['id']; ?>">edit</a>
+                                            <a class="btn btn-danger btn-xs" href="<?= base_url('menu/delMenu/') . $m['id']; ?>">delete</a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
@@ -83,29 +81,3 @@
     </div>
 </div>
 <!--End Modal -->
-
-<!-- Add Menu Modal -->
-
-<div class="modal fade" id="editMenuModal">
-    <div class="modal-dialog">
-        <div class="modal-content border-primary">
-            <div class="modal-header bg-primary">
-                <h5 class="modal-title text-white"><i class="fa fa-star"></i> New Menu</h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="<?= base_url('menu/edit'); ?>" method="post">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="menu" name="menu" value="<?= $m['menu']; ?>">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-inverse-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Add</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
