@@ -34,6 +34,24 @@
         });
     });
 </script>
+<!-- Change access -->
+<script>
+    $('.form-check-input').on('click', function() {
+        const menuId = $(this).data('menu');
+        const roleId = $(this).data('role');
+        $.ajax({
+            url: "<?= base_url('role/changeaccess'); ?>",
+            type: 'post',
+            data: {
+                menuId: menuId,
+                roleId: roleId
+            },
+            success: function() {
+                document.location.href = "<?= base_url('role/access/'); ?>" + roleId;
+            }
+        });
+    });
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
          Both of these plugins are recommended to enhance the

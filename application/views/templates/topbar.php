@@ -34,7 +34,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="<?= base_url('assets/'); ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                    <img src="<?= base_url('assets/'); ?>img/profile/<?= $user['image']; ?>" class="img-circle" alt="User Image">
                                     <p><?= $user['name']; ?>
                                         <small>Member since: <?= date('F d Y', $user['date_created']); ?></small>
                                     </p>

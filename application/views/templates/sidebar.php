@@ -20,7 +20,7 @@ $menu = $this->db->query($queryMenu)->result_array();
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= base_url('assets/'); ?>dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="<?= base_url('assets/'); ?>img/profile/<?= $user['image']; ?>" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
                 <p><?= $user['username']; ?></p>
@@ -38,16 +38,16 @@ $menu = $this->db->query($queryMenu)->result_array();
 
                 <!-- Query submenu -->
                 <?php
-                    $menuId = $m['id'];
-                    $querySubMenu = "   SELECT *
+                                                                        $menuId = $m['id'];
+                                                                        $querySubMenu = "   SELECT *
                                         FROM user_sub_menu JOIN user_menu
                                         ON user_sub_menu.menu_id = user_menu.id
                                         WHERE user_menu.id = $menuId
                                         AND user_sub_menu.is_active = 1
                      ";
 
-                    $subMenu = $this->db->query($querySubMenu)->result_array();
-                    ?>
+                                                                        $subMenu = $this->db->query($querySubMenu)->result_array();
+                ?>
 
                 <?php foreach ($subMenu as $sm) : ?>
                     <!-- Optionally, you can add icons to the links -->
