@@ -13,7 +13,6 @@
         <!-- Your Page Content Here -->
         <div class="row">
 
-
             <div class="col-xs-8">
                 <?= $this->session->flashdata('message'); ?>
                 <div class="box">
@@ -45,6 +44,11 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <a class="btn btn-danger" href="<?= base_url('role'); ?>">Back</a>
+                            </div>
+                        </div>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->
             </div><!-- /.col -->
